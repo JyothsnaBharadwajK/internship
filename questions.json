@@ -1,0 +1,242 @@
+[
+  {
+    "id": "q-01",
+    "topic": "K\u00f6ssel-Lewis Approach",
+    "topic_id": "kossel-lewis",
+    "difficulty": "easy",
+    "type": "mcq",
+    "question": "Which of the following molecules violates the octet rule due to an incomplete octet on the central atom?",
+    "options": [
+      "CCl4",
+      "BF3",
+      "CH4",
+      "CO2"
+    ],
+    "answer": "BF3",
+    "explanation": "In BF3, Boron has only 3 valence electrons and shares 3 pairs with Fluorine, having only 6 electrons in its valence shell (incomplete octet)."
+  },
+  {
+    "id": "q-02",
+    "topic": "K\u00f6ssel-Lewis Approach",
+    "topic_id": "kossel-lewis",
+    "difficulty": "medium",
+    "type": "mcq",
+    "question": "What is the formal charge on the central oxygen atom in the ozone (O3) molecule?",
+    "options": [
+      "0",
+      "+1",
+      "-1",
+      "+2"
+    ],
+    "answer": "+1",
+    "explanation": "For central O: Valence electrons = 6, Lone pair electrons = 2, Shared bonding electrons = 6 (one double bond + one single bond). Formal Charge = 6 - 2 - (1/2)(6) = +1."
+  },
+  {
+    "id": "q-03",
+    "topic": "Ionic Bonding",
+    "topic_id": "ionic-bond",
+    "difficulty": "easy",
+    "type": "mcq",
+    "question": "Which combination of enthalpy factors most strongly favors the formation of a stable ionic compound?",
+    "options": [
+      "High ionization enthalpy and low lattice enthalpy",
+      "Low ionization enthalpy, high negative electron gain enthalpy, and high lattice enthalpy",
+      "Positive electron gain enthalpy and low lattice enthalpy",
+      "High ionization enthalpy and high electronegativity difference only"
+    ],
+    "answer": "Low ionization enthalpy, high negative electron gain enthalpy, and high lattice enthalpy",
+    "explanation": "Low ionization enthalpy allows easy cation formation, high negative electron gain enthalpy releases energy upon anion formation, and high lattice enthalpy stabilizes the 3D crystal lattice."
+  },
+  {
+    "id": "q-04",
+    "topic": "Bond Parameters",
+    "topic_id": "bond-parameters",
+    "difficulty": "medium",
+    "type": "mcq",
+    "question": "Which of the following molecules has a net dipole moment of zero (\u03bc = 0 D)?",
+    "options": [
+      "H2O",
+      "NH3",
+      "BF3",
+      "SO2"
+    ],
+    "answer": "BF3",
+    "explanation": "BF3 has a symmetrical trigonal planar geometry (120\u00b0 bond angles). The three equal B-F bond dipoles cancel out completely by vector addition, giving \u03bc = 0 D."
+  },
+  {
+    "id": "q-05",
+    "topic": "VSEPR Theory",
+    "topic_id": "vsepr-theory",
+    "difficulty": "easy",
+    "type": "mcq",
+    "question": "According to VSEPR theory, what is the shape of a molecule with 4 bonding pairs and 0 lone pairs around the central atom (AB4 type)?",
+    "options": [
+      "Square planar",
+      "Tetrahedral",
+      "Trigonal bipyramidal",
+      "See-saw"
+    ],
+    "answer": "Tetrahedral",
+    "explanation": "An AB4 molecule (like CH4, CCl4, SiF4) arranges 4 bond pairs symmetrically in 3D at 109.5\u00b0 bond angles to give a tetrahedral shape."
+  },
+  {
+    "id": "q-06",
+    "topic": "VSEPR Theory",
+    "topic_id": "vsepr-theory",
+    "difficulty": "medium",
+    "type": "mcq",
+    "question": "What is the molecular geometry of SF4 (which has 4 bond pairs and 1 lone pair on sulfur)?",
+    "options": [
+      "Tetrahedral",
+      "Square planar",
+      "See-saw (Distorted tetrahedron)",
+      "T-shaped"
+    ],
+    "answer": "See-saw (Distorted tetrahedron)",
+    "explanation": "SF4 is an AB4E molecule based on trigonal bipyramidal electron geometry. The lone pair occupies an equatorial position to minimize 90\u00b0 repulsions, creating a see-saw geometry."
+  },
+  {
+    "id": "q-07",
+    "topic": "Valence Bond Theory",
+    "topic_id": "valence-bond-theory",
+    "difficulty": "medium",
+    "type": "mcq",
+    "question": "How many \u03c3 (sigma) and \u03c0 (pi) bonds are present in an ethyne (C2H2) molecule?",
+    "options": [
+      "2 \u03c3 and 3 \u03c0",
+      "3 \u03c3 and 2 \u03c0",
+      "4 \u03c3 and 1 \u03c0",
+      "5 \u03c3 and 0 \u03c0"
+    ],
+    "answer": "3 \u03c3 and 2 \u03c0",
+    "explanation": "In H-C\u2261C-H: There are 2 C-H single \u03c3 bonds, 1 C-C \u03c3 bond, and 2 C-C \u03c0 bonds in the triple bond. Total = 3 \u03c3 bonds and 2 \u03c0 bonds."
+  },
+  {
+    "id": "q-08",
+    "topic": "Hybridisation",
+    "topic_id": "hybridisation",
+    "difficulty": "easy",
+    "type": "mcq",
+    "question": "What is the type of hybridisation and geometry in a molecule of PCl5?",
+    "options": [
+      "sp3, Tetrahedral",
+      "sp3d, Trigonal bipyramidal",
+      "sp3d2, Octahedral",
+      "dsp2, Square planar"
+    ],
+    "answer": "sp3d, Trigonal bipyramidal",
+    "explanation": "In PCl5, phosphorus uses one 3s, three 3p, and one 3d orbital (dz\u00b2) to form 5 equivalent sp\u00b3d hybrid orbitals arranged in a trigonal bipyramid."
+  },
+  {
+    "id": "q-09",
+    "topic": "Hybridisation",
+    "topic_id": "hybridisation",
+    "difficulty": "hard",
+    "type": "mcq",
+    "question": "When AlCl3 reacts with Cl- to form [AlCl4]-, the hybridisation of Al changes from:",
+    "options": [
+      "sp to sp2",
+      "sp2 to sp3",
+      "sp3 to sp3d",
+      "sp2 to dsp2"
+    ],
+    "answer": "sp2 to sp3",
+    "explanation": "In monomeric AlCl3, Al has 3 bond pairs (sp\u00b2 trigonal planar). In [AlCl4]-, Al forms 4 single bonds with 4 chlorine atoms, adopting sp\u00b3 hybridisation (tetrahedral)."
+  },
+  {
+    "id": "q-10",
+    "topic": "Molecular Orbital Theory",
+    "topic_id": "mot-theory",
+    "difficulty": "medium",
+    "type": "mcq",
+    "question": "What is the bond order and magnetic nature of the N2 molecule (14 electrons)?",
+    "options": [
+      "Bond Order = 2.0, Paramagnetic",
+      "Bond Order = 3.0, Diamagnetic",
+      "Bond Order = 2.5, Paramagnetic",
+      "Bond Order = 3.0, Paramagnetic"
+    ],
+    "answer": "Bond Order = 3.0, Diamagnetic",
+    "explanation": "N2 has 10 bonding electrons and 4 antibonding electrons: B.O. = (10 - 4)/2 = 3.0. All electrons in all molecular orbitals are paired, making N2 diamagnetic."
+  },
+  {
+    "id": "q-11",
+    "topic": "Molecular Orbital Theory",
+    "topic_id": "mot-theory",
+    "difficulty": "hard",
+    "type": "mcq",
+    "question": "Which of the following diatomic species is paramagnetic with a bond order of 2.0?",
+    "options": [
+      "C2",
+      "N2",
+      "O2",
+      "F2"
+    ],
+    "answer": "O2",
+    "explanation": "O2 has 16 electrons: B.O. = (10 - 6)/2 = 2.0. It has 2 unpaired electrons (one in \u03c0*2px and one in \u03c0*2py), making it paramagnetic."
+  },
+  {
+    "id": "q-12",
+    "topic": "Hydrogen Bonding",
+    "topic_id": "hydrogen-bonding",
+    "difficulty": "easy",
+    "type": "mcq",
+    "question": "Hydrogen bonding is formed only when hydrogen is covalently attached to elements of:",
+    "options": [
+      "High electropositivity and large atomic size",
+      "High electronegativity and small atomic size (F, O, N)",
+      "Low electronegativity and large size (Cl, Br, I)",
+      "Transition metal d-block elements"
+    ],
+    "answer": "High electronegativity and small atomic size (F, O, N)",
+    "explanation": "Strong hydrogen bonding requires very high electronegativity and small atomic size (concentrated partial negative charge), specifically Fluorine, Oxygen, and Nitrogen."
+  },
+  {
+    "id": "q-13",
+    "topic": "Hydrogen Bonding",
+    "topic_id": "hydrogen-bonding",
+    "difficulty": "medium",
+    "type": "mcq",
+    "question": "Which of the following compounds exhibits intramolecular hydrogen bonding?",
+    "options": [
+      "Water (H2O)",
+      "Ethanol (C2H5OH)",
+      "o-Nitrophenol",
+      "p-Nitrophenol"
+    ],
+    "answer": "o-Nitrophenol",
+    "explanation": "In o-nitrophenol, the -NO2 and -OH groups are situated close to each other on adjacent carbon atoms, forming a 6-membered ring via intramolecular hydrogen bonding."
+  },
+  {
+    "id": "q-14",
+    "topic": "Bond Parameters",
+    "topic_id": "bond-parameters",
+    "difficulty": "hard",
+    "type": "mcq",
+    "question": "According to Fajans' rules, which ionic compound will have the maximum covalent character?",
+    "options": [
+      "NaCl",
+      "MgCl2",
+      "AlCl3",
+      "KCl"
+    ],
+    "answer": "AlCl3",
+    "explanation": "Fajans' rules state that smaller cation size and higher positive charge increase polarizing power. Al\u00b3\u207a has the highest charge (+3) and smallest ionic radius among these cations, creating maximum covalent character."
+  },
+  {
+    "id": "q-15",
+    "topic": "Molecular Orbital Theory",
+    "topic_id": "mot-theory",
+    "difficulty": "hard",
+    "type": "mcq",
+    "question": "Arrange the oxygen species in order of increasing bond length: O2, O2+, O2-, O2^2-.",
+    "options": [
+      "O2+ < O2 < O2- < O2^2-",
+      "O2^2- < O2- < O2 < O2+",
+      "O2 < O2+ < O2- < O2^2-",
+      "O2- < O2^2- < O2 < O2+"
+    ],
+    "answer": "O2+ < O2 < O2- < O2^2-",
+    "explanation": "Bond orders are: O2+ (2.5) > O2 (2.0) > O2- (1.5) > O2^2- (1.0). Since Bond Length is inversely proportional to Bond Order, the bond length order is O2+ < O2 < O2- < O2^2-."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "topic": "MOT Bond Order & Diamagnetic/Paramagnetic Species",
+    "core_fact": "Liquid O2 is paramagnetic with 2 unpaired electrons in degenerate (\u03c0*2px)\u00b9 (\u03c0*2py)\u00b9 orbitals.",
+    "neet_trap": "NEET Trap: F2 and O2^2- both have 18 electrons and Bond Order = 1.0 (Diamagnetic). Do not confuse O2 (16 e-, paramagnetic, B.O.=2) with O2^2- (18 e-, diamagnetic, B.O.=1)."
+  },
+  {
+    "topic": "VSEPR Shapes with Lone Pairs",
+    "core_fact": "Repulsion hierarchy: lp-lp > lp-bp > bp-bp. Lone pairs occupy equatorial positions in TBP (sp3d) to minimize 90\u00b0 repulsions.",
+    "neet_trap": "NEET Trap: ClF3 has 3 bond pairs and 2 lone pairs -> T-shaped (NOT trigonal planar). XeF4 has 4 bond pairs and 2 lone pairs -> Square planar (NOT tetrahedral)."
+  },
+  {
+    "topic": "Isoelectronic Species Rule",
+    "core_fact": "Species with identical total electron counts have identical Bond Orders and similar MO configurations.",
+    "neet_trap": "NEET Trap: N2 (14 e-), CO (14 e-), NO+ (14 e-), CN- (14 e-) ALL have Bond Order = 3.0 and are Diamagnetic."
+  },
+  {
+    "topic": "Dipole Moment: NH3 vs NF3",
+    "core_fact": "Dipole moment of NH3 (1.47 D) is much greater than NF3 (0.23 D).",
+    "neet_trap": "NEET Trap: In NH3, the N lone pair reinforces N-H bond dipoles. In NF3, fluorine is more electronegative than nitrogen, so N-F dipoles oppose the lone pair dipole!"
+  },
+  {
+    "topic": "Hydrogen Bonding Boiling Point Anomalies",
+    "core_fact": "Intermolecular H-bonding increases boiling point and water solubility (e.g. H2O, ethanol, p-nitrophenol).",
+    "neet_trap": "NEET Trap: o-Nitrophenol has Intramolecular H-bonding (chelation) -> Steam volatile, lower boiling point than p-nitrophenol."
+  },
+  {
+    "topic": "Halogen Bond Dissociation Enthalpy",
+    "core_fact": "Order of Bond Enthalpy: Cl2 > Br2 > F2 > I2.",
+    "neet_trap": "NEET Trap: F2 does NOT have the highest bond energy. Extreme lone-pair repulsion on tiny Fluorine atoms weakens the F-F bond (158.8 kJ/mol vs 242.6 kJ/mol for Cl2)."
+  }
+]

@@ -1,0 +1,146 @@
+{
+  "key_definitions": [
+    {
+      "term": "Chemical Bond",
+      "definition": "Attractive force which holds various constituents (atoms, ions, etc.) together in different chemical species to lower potential energy and attain stability."
+    },
+    {
+      "term": "Octet Rule",
+      "definition": "Atoms combine either by electron transfer or electron sharing in order to acquire a stable octet (8 valence electrons, ns\u00b2np\u2076) like noble gases."
+    },
+    {
+      "term": "Formal Charge",
+      "definition": "The hypothetical charge assigned to an atom in a molecule: F.C. = V - N - (1/2)B."
+    },
+    {
+      "term": "Lattice Enthalpy",
+      "definition": "Energy required to completely separate 1 mole of a solid ionic compound into its isolated gaseous constituent ions (NaCl: 788 kJ/mol)."
+    },
+    {
+      "term": "Bond Order",
+      "definition": "Number of chemical bonds between two atoms. For MOT: B.O. = (Nb - Na)/2."
+    },
+    {
+      "term": "Resonance Hybrid",
+      "definition": "The single actual structure of a molecule representing the blend of multiple canonical Lewis forms with lowered potential energy."
+    },
+    {
+      "term": "Dipole Moment (\u03bc)",
+      "definition": "Product of the magnitude of electric charge (Q) and distance of separation (r): \u03bc = Q \u00d7 r (1 Debye = 3.33564 \u00d7 10\u207b\u00b3\u2070 C m)."
+    },
+    {
+      "term": "Hybridisation",
+      "definition": "Quantum mechanical phenomenon of intermixing atomic orbitals of comparable energy to generate equal number of equivalent hybrid orbitals with specific directional geometries."
+    },
+    {
+      "term": "Hydrogen Bond",
+      "definition": "Attractive electrostatic force binding the partially positive hydrogen atom of one molecule with a strongly electronegative atom (F, O, N) having lone pairs."
+    }
+  ],
+  "master_formulas": [
+    {
+      "name": "Formal Charge",
+      "formula": "F.C. = V - N - \\frac{1}{2}B",
+      "description": "V = valence e\u207b in free atom, N = non-bonding lone pair e\u207b, B = total bonding e\u207b"
+    },
+    {
+      "name": "Electric Dipole Moment",
+      "formula": "\\mu = Q \\times r",
+      "description": "Q = charge magnitude, r = internuclear distance (1 D = 3.33564 \u00d7 10\u207b\u00b3\u2070 C\u00b7m)"
+    },
+    {
+      "name": "Average Bond Enthalpy",
+      "formula": "\\Delta_{a}H_{avg} = \\frac{\\sum \\Delta H_{dissociation}}{n_{bonds}}",
+      "description": "For polyatomic molecules like H\u2082O (464.5 kJ/mol)"
+    },
+    {
+      "name": "MOT Bond Order",
+      "formula": "B.O. = \\frac{N_b - N_a}{2}",
+      "description": "Nb = bonding electrons, Na = antibonding electrons"
+    },
+    {
+      "name": "H-Bond Strength Order",
+      "formula": "F-H\\cdots F > O-H\\cdots O > N-H\\cdots N",
+      "description": "Dictated by electronegativity and small radius"
+    }
+  ],
+  "key_differences": [
+    {
+      "topic": "\u03c3 (Sigma) Bond vs \u03c0 (Pi) Bond",
+      "points": [
+        {
+          "aspect": "Overlap Nature",
+          "a": "Axial / head-on overlap along internuclear axis",
+          "b": "Lateral / sideways overlap perpendicular to axis"
+        },
+        {
+          "aspect": "Electron Cloud",
+          "a": "Symmetrical cylindrically along axis",
+          "b": "Two lobes, above and below internuclear axis"
+        },
+        {
+          "aspect": "Bond Strength",
+          "a": "Stronger due to larger orbital overlap",
+          "b": "Weaker due to limited lateral overlap"
+        },
+        {
+          "aspect": "Free Rotation",
+          "a": "Free rotation about bond is allowed",
+          "b": "Rotation is hindered / restricted"
+        },
+        {
+          "aspect": "Independent Existence",
+          "a": "Can exist independently as single bond",
+          "b": "Always formed in addition to an existing \u03c3 bond"
+        }
+      ]
+    },
+    {
+      "topic": "Intermolecular vs Intramolecular H-Bonding",
+      "points": [
+        {
+          "aspect": "Location",
+          "a": "Between two different molecules (same or different compound)",
+          "b": "Within the exact same molecule"
+        },
+        {
+          "aspect": "Effect on Boiling Point",
+          "a": "Increases boiling point significantly (e.g. H2O, p-nitrophenol)",
+          "b": "Lowers boiling point (e.g. o-nitrophenol)"
+        },
+        {
+          "aspect": "Solubility in Water",
+          "a": "Increases water solubility by forming H-bonds with water",
+          "b": "Decreases water solubility due to internal chelation"
+        }
+      ]
+    },
+    {
+      "topic": "Bonding MO vs Antibonding MO",
+      "points": [
+        {
+          "aspect": "Formation",
+          "a": "Constructive addition of wavefunctions: \u03c8A + \u03c8B",
+          "b": "Destructive subtraction of wavefunctions: \u03c8A - \u03c8B"
+        },
+        {
+          "aspect": "Energy",
+          "a": "Lower energy than parent atomic orbitals (stabilizing)",
+          "b": "Higher energy than parent atomic orbitals (destabilizing)"
+        },
+        {
+          "aspect": "Electron Density",
+          "a": "High electron density concentrated between nuclei",
+          "b": "Zero electron density between nuclei (nodal plane)"
+        }
+      ]
+    }
+  ],
+  "exam_tips": [
+    "Remember the VSEPR repulsion hierarchy: lp-lp > lp-bp > bp-bp.",
+    "In MOT for homonuclear diatomics: If total electrons \u2264 14 (Li2 to N2), \u03c02px=\u03c02py is lower in energy than \u03c32pz. If electrons > 14 (O2, F2), \u03c32pz is lower in energy than \u03c02px=\u03c02py.",
+    "Isoelectronic species always have identical bond orders (e.g. N2, CO, NO+, CN- all have 14 electrons and Bond Order = 3).",
+    "Liquid O2 is paramagnetic due to 2 unpaired electrons in \u03c0*2px and \u03c0*2py orbitals.",
+    "In PCl5 (sp3d), the two axial bonds (240 pm) are longer and weaker than the three equatorial bonds (202 pm) due to stronger 90\u00b0 repulsions."
+  ]
+}

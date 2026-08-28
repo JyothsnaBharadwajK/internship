@@ -1,0 +1,114 @@
+[
+  {
+    "id": "fc-01",
+    "topic": "K\u00f6ssel-Lewis Approach",
+    "topic_id": "kossel-lewis",
+    "difficulty": "Easy",
+    "front": "What is the Octet Rule?",
+    "back": "Atoms combine either by transfer of valence electrons (gaining or losing) or by sharing of valence electrons in order to have an octet (eight electrons) in their valence shells to attain noble gas stability."
+  },
+  {
+    "id": "fc-02",
+    "topic": "K\u00f6ssel-Lewis Approach",
+    "topic_id": "kossel-lewis",
+    "difficulty": "Medium",
+    "front": "How is Formal Charge (F.C.) on an atom calculated?",
+    "back": "Formal Charge = [Total valence electrons in free atom] - [Total non-bonding lone pair electrons] - (1/2) * [Total bonding shared electrons]. Formula: F.C. = V - N - (1/2)B."
+  },
+  {
+    "id": "fc-03",
+    "topic": "K\u00f6ssel-Lewis Approach",
+    "topic_id": "kossel-lewis",
+    "difficulty": "Medium",
+    "front": "What are three major limitations of the Octet Rule?",
+    "back": "1. Incomplete octet of central atom (LiCl, BeH2, BCl3, BF3).\n2. Odd-electron molecules (NO, NO2).\n3. Expanded octet utilizing d-orbitals (PF5, SF6, H2SO4)."
+  },
+  {
+    "id": "fc-04",
+    "topic": "Ionic Bonding",
+    "topic_id": "ionic-bond",
+    "difficulty": "Easy",
+    "front": "Define Lattice Enthalpy of an ionic solid.",
+    "back": "The energy required to completely separate one mole of a solid ionic compound into its gaseous constituent ions (e.g., NaCl(s) \u2192 Na+(g) + Cl-(g); \u0394latticeH = +788 kJ/mol)."
+  },
+  {
+    "id": "fc-05",
+    "topic": "Bond Parameters",
+    "topic_id": "bond-parameters",
+    "difficulty": "Easy",
+    "front": "What is the relationship between Bond Order, Bond Enthalpy, and Bond Length?",
+    "back": "Higher Bond Order leads to higher Bond Dissociation Enthalpy and shorter Bond Length (Bond Order \u221d Bond Strength \u221d 1 / Bond Length)."
+  },
+  {
+    "id": "fc-06",
+    "topic": "Bond Parameters",
+    "topic_id": "bond-parameters",
+    "difficulty": "Hard",
+    "front": "Why does NH3 have a much higher dipole moment (1.47 D) than NF3 (0.23 D)?",
+    "back": "In NH3, the orbital dipole of the nitrogen lone pair reinforces the resultant dipole of the three N-H bonds. In NF3, fluorine is more electronegative than nitrogen, so the N-F bond dipoles oppose the lone pair dipole, resulting in a low net dipole."
+  },
+  {
+    "id": "fc-07",
+    "topic": "VSEPR Theory",
+    "topic_id": "vsepr-theory",
+    "difficulty": "Easy",
+    "front": "What is the order of repulsive interactions in VSEPR theory?",
+    "back": "Lone Pair - Lone Pair (lp - lp) > Lone Pair - Bond Pair (lp - bp) > Bond Pair - Bond Pair (bp - bp)."
+  },
+  {
+    "id": "fc-08",
+    "topic": "VSEPR Theory",
+    "topic_id": "vsepr-theory",
+    "difficulty": "Medium",
+    "front": "Why is the bond angle in H2O 104.5\u00b0 while in NH3 it is 107\u00b0 (both derived from tetrahedral 109.5\u00b0)?",
+    "back": "H2O has 2 lone pairs on oxygen causing strong lp-lp repulsion that compresses the bond angle to 104.5\u00b0. NH3 has only 1 lone pair, causing less compression (107\u00b0)."
+  },
+  {
+    "id": "fc-09",
+    "topic": "Valence Bond Theory",
+    "topic_id": "valence-bond-theory",
+    "difficulty": "Medium",
+    "front": "How does a \u03c3 (sigma) bond differ from a \u03c0 (pi) bond?",
+    "back": "A \u03c3 bond is formed by end-to-end (head-on/axial) overlap of atomic orbitals along the internuclear axis (stronger, cylindrical symmetry). A \u03c0 bond is formed by lateral (sideways) overlap perpendicular to the internuclear axis (weaker, electron density above and below axis)."
+  },
+  {
+    "id": "fc-10",
+    "topic": "Hybridisation",
+    "topic_id": "hybridisation",
+    "difficulty": "Easy",
+    "front": "What is Hybridisation?",
+    "back": "The process of intermixing atomic orbitals of slightly different energies to produce an entirely new set of equivalent orbitals with identical energy, shape, and directional properties."
+  },
+  {
+    "id": "fc-11",
+    "topic": "Hybridisation",
+    "topic_id": "hybridisation",
+    "difficulty": "Hard",
+    "front": "Why are axial bonds longer and weaker than equatorial bonds in PCl5 (sp3d)?",
+    "back": "In trigonal bipyramidal PCl5, the 2 axial P-Cl bonds experience greater repulsive forces at 90\u00b0 from three equatorial bonds. To minimize repulsion, axial bonds lengthen (240 pm) compared to equatorial bonds (202 pm at 120\u00b0)."
+  },
+  {
+    "id": "fc-12",
+    "topic": "Molecular Orbital Theory",
+    "topic_id": "mot-theory",
+    "difficulty": "Medium",
+    "front": "How does Molecular Orbital Theory (MOT) explain the paramagnetism of O2?",
+    "back": "The electronic configuration of O2 shows two unpaired electrons in the degenerate antibonding \u03c0*2px\u00b9 and \u03c0*2py\u00b9 orbitals, which causes paramagnetic behavior."
+  },
+  {
+    "id": "fc-13",
+    "topic": "Molecular Orbital Theory",
+    "topic_id": "mot-theory",
+    "difficulty": "Easy",
+    "front": "Why does He2 molecule not exist according to MOT?",
+    "back": "He2 has 4 electrons: (\u03c31s)\u00b2 (\u03c3*1s)\u00b2. Number of bonding electrons Nb = 2, antibonding Na = 2. Bond Order = (2 - 2)/2 = 0. A bond order of zero means no net binding force, so He2 cannot exist."
+  },
+  {
+    "id": "fc-14",
+    "topic": "Hydrogen Bonding",
+    "topic_id": "hydrogen-bonding",
+    "difficulty": "Medium",
+    "front": "Distinguish between Intermolecular and Intramolecular Hydrogen Bonding with examples.",
+    "back": "Intermolecular H-bonding occurs between two separate molecules (e.g., HF, H2O, ethanol), causing higher boiling points. Intramolecular H-bonding occurs within the same molecule (e.g., o-nitrophenol, salicylic acid)."
+  }
+]

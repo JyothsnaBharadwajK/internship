@@ -1,0 +1,93 @@
+[
+  {
+    "id": "pyq-2024",
+    "year": "NEET 2024",
+    "question": "Which of the following pairs of species have identical bond order and are isoelectronic?",
+    "options": [
+      "N2 and O2",
+      "CO and NO+",
+      "O2- and B2",
+      "CN- and NO"
+    ],
+    "answer": "CO and NO+",
+    "solution": "Both CO and NO\u207a have 14 electrons each (Isoelectronic). Electronic configuration gives Bond Order = (10 - 4)/2 = 3.0. Hence, both have an identical bond order of 3."
+  },
+  {
+    "id": "pyq-2023",
+    "year": "NEET 2023",
+    "question": "Among the following, which one has a see-saw molecular geometry according to VSEPR theory?",
+    "options": [
+      "SF4",
+      "XeF4",
+      "CCl4",
+      "NH4+"
+    ],
+    "answer": "SF4",
+    "solution": "In SF4, central sulfur has 6 valence electrons: 4 bond pairs and 1 lone pair (AB4E type). The lone pair occupies an equatorial position in a trigonal bipyramid, yielding a see-saw geometry."
+  },
+  {
+    "id": "pyq-2022",
+    "year": "NEET 2022",
+    "question": "Which of the following molecules represents the order of hybridisation sp2, sp2, sp, sp from left to right atoms?",
+    "options": [
+      "CH2=CH-C\u2261CH",
+      "CH2=CH-CH=CH2",
+      "CH\u2261C-C\u2261CH",
+      "CH3-CH=CH-CH3"
+    ],
+    "answer": "CH2=CH-C\u2261CH",
+    "solution": "In CH2=CH-C\u2261CH: C1 is sp2 (double bond), C2 is sp2 (double bond), C3 is sp (triple bond), and C4 is sp (triple bond)."
+  },
+  {
+    "id": "pyq-2021",
+    "year": "NEET 2021",
+    "question": "The correct sequence of increasing bond dissociation enthalpy for halogens is:",
+    "options": [
+      "I2 < Br2 < F2 < Cl2",
+      "I2 < F2 < Br2 < Cl2",
+      "Cl2 < Br2 < F2 < I2",
+      "F2 < Cl2 < Br2 < I2"
+    ],
+    "answer": "I2 < F2 < Br2 < Cl2",
+    "solution": "Due to very small atomic size and high inter-electronic repulsions between non-bonding lone pairs on adjacent fluorine atoms, the F-F bond is significantly weaker than Cl-Cl and Br-Br. Thus, the order is I2 < F2 < Br2 < Cl2."
+  },
+  {
+    "id": "pyq-2020",
+    "year": "NEET 2020",
+    "question": "Which of the following diatomic species contains only \u03c0 (pi) bonds according to Molecular Orbital Theory?",
+    "options": [
+      "C2",
+      "N2",
+      "O2",
+      "Be2"
+    ],
+    "answer": "C2",
+    "solution": "C2 has 12 electrons. MO configuration: KK (\u03c32s)\u00b2 (\u03c3*2s)\u00b2 (\u03c02px)\u00b2 (\u03c02py)\u00b2. All 4 valence electrons are present in the two degenerate \u03c0 molecular orbitals, meaning the double bond in C2 consists solely of two \u03c0 bonds."
+  },
+  {
+    "id": "pyq-2019",
+    "year": "NEET 2019",
+    "question": "Which of the following molecules has maximum dipole moment?",
+    "options": [
+      "NH3",
+      "NF3",
+      "BF3",
+      "CO2"
+    ],
+    "answer": "NH3",
+    "solution": "In NH3 (\u03bc = 1.47 D), the orbital dipole of the nitrogen lone pair points in the same direction as the resultant dipole of the three N-H bonds. In NF3 (\u03bc = 0.23 D), the lone pair opposes the N-F dipoles. BF3 and CO2 have \u03bc = 0 D."
+  },
+  {
+    "id": "pyq-2018",
+    "year": "NEET 2018",
+    "question": "In PCl5, the hybridization of P is sp3d. Why are the axial bonds longer than the equatorial bonds?",
+    "options": [
+      "Axial bonds suffer greater repulsion from three equatorial bonds at 90\u00b0",
+      "Equatorial bonds suffer greater repulsion",
+      "Axial bonds are pure p-orbitals",
+      "PCl5 is non-polar"
+    ],
+    "answer": "Axial bonds suffer greater repulsion from three equatorial bonds at 90\u00b0",
+    "solution": "The two axial P-Cl bonds experience repulsion from three equatorial bonds at 90\u00b0, whereas equatorial bonds only have two 90\u00b0 repulsions. Hence, axial bonds (240 pm) lengthen to reduce repulsion compared to equatorial bonds (202 pm)."
+  }
+]

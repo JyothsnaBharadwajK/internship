@@ -1,0 +1,37 @@
+[
+  {
+    "quantity": "Formal Charge (F.C.)",
+    "formula": "F.C. = V - N - (1/2)B",
+    "unit": "Dimensionless (Charge units)"
+  },
+  {
+    "quantity": "Electric Dipole Moment (\u03bc)",
+    "formula": "\u03bc = Q \u00d7 r",
+    "unit": "Debye (1 D = 3.33564 \u00d7 10\u207b\u00b3\u2070 C\u00b7m)"
+  },
+  {
+    "quantity": "MOT Bond Order",
+    "formula": "B.O. = (Nb - Na) / 2",
+    "unit": "Dimensionless"
+  },
+  {
+    "quantity": "Average Bond Enthalpy",
+    "formula": "\u0394aH_avg = \u03a3(\u0394H_dissoc) / n_bonds",
+    "unit": "kJ \u00b7 mol\u207b\u00b9"
+  },
+  {
+    "quantity": "Lattice Enthalpy (Born-Haber)",
+    "formula": "\u0394_subH + (1/2)\u0394_dissH + \u0394_iH + \u0394_egH + U = 0",
+    "unit": "kJ \u00b7 mol\u207b\u00b9"
+  },
+  {
+    "quantity": "Magnetic Moment (Spin-only)",
+    "formula": "\u03bc_s = \u221a(n(n + 2))",
+    "unit": "Bohr Magneton (BM)"
+  },
+  {
+    "quantity": "Percentage Ionic Character (Hannay-Smith)",
+    "formula": "% Ionic = 16|\u03c7A - \u03c7B| + 3.5(\u03c7A - \u03c7B)\u00b2",
+    "unit": "Percentage (%)"
+  }
+]

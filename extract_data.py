@@ -1,0 +1,321 @@
+import json
+import re
+
+def process_ncert_json(input_file, output_file):
+    with open(input_file, encoding='utf-8') as f:
+        data = json.load(f)
+    
+    pages = data.get('pages', [])
+    full_text = "\n".join([p['text'] for p in pages])
+    
+    # Define modules with titles and content mapping
+    modules = [
+        {
+            "id": "kossel-lewis",
+            "title": "4.1 Kössel-Lewis Approach to Chemical Bonding",
+            "subtitle": "Octet Rule, Lewis Symbols, Lewis Structures & Formal Charge",
+            "icon": "atom",
+            "summary": "Kössel and Lewis (1916) independently provided logical explanations of valence based on noble gas stability. Lewis introduced Lewis symbols, octet rule, and dot structures.",
+            "subsections": [
+                {
+                    "title": "4.1.1 Octet Rule",
+                    "content": "Atoms combine either by transfer of valence electrons from one atom to another (gaining or losing) or by sharing of valence electrons in order to have an octet (eight electrons) in their valence shells. Every system tends to attain stability by lowering its overall potential energy."
+                },
+                {
+                    "title": "4.1.2 Covalent Bond & Lewis Symbols",
+                    "content": "Langmuir (1919) refined Lewis postulations by introducing the term 'covalent bond'. When two atoms share one electron pair, they form a single covalent bond (e.g. Cl2, H2O, CCl4). Multiple bonds form when two or three electron pairs are shared (e.g. double bonds in CO2, C2H4; triple bonds in N2, C2H2). Valence electrons are represented as dots surrounding the chemical symbol."
+                },
+                {
+                    "title": "4.1.3 Lewis Representation of Simple Molecules",
+                    "content": "Steps to draw Lewis structures:\n1. Count total valence electrons of combining atoms.\n2. For anions, add electrons equal to negative charge; for cations, subtract electrons.\n3. Identify central atom (usually least electronegative, e.g. N in NF3, C in CO3^2-).\n4. Distribute single shared pairs, then assign octets/duplets (for H).\n5. Use remaining pairs for multiple bonding if central atom octet is incomplete."
+                },
+                {
+                    "title": "4.1.4 Formal Charge",
+                    "content": "Formal charge (F.C.) on an atom in a Lewis structure is defined as:\nF.C. = [Total valence electrons in free atom] - [Total non-bonding (lone pair) electrons] - (1/2) * [Total bonding (shared) electrons]\nFormal charge helps select the lowest energy structure among canonical forms (structure with smallest formal charges is preferred)."
+                },
+                {
+                    "title": "4.1.5 Limitations of the Octet Rule",
+                    "content": "1. Incomplete Octet of Central Atom: LiCl, BeH2, BCl3, BF3, AlCl3 (central atom has fewer than 8 electrons).\n2. Odd-Electron Molecules: NO, NO2 (cannot satisfy octet for all atoms).\n3. Expanded Octet: PF5 (10 e-), SF6 (12 e-), H2SO4 (12 e-) (3rd period elements use 3d orbitals).\n4. Noble Gas Compounds: XeF2, KrF2, XeOF2 form despite noble gas octets.\n5. Silent on molecule shapes and relative energies."
+                }
+            ],
+            "key_formulas": [
+                "F.C. = V - N - (1/2)B",
+                "Group Valence = dots OR (8 - dots)"
+            ],
+            "table_data": [
+                {"Molecule": "H2", "Valence Electrons": 2, "Bond Pairs": 1, "Lone Pairs": 0, "Bond Type": "Single"},
+                {"Molecule": "Cl2", "Valence Electrons": 14, "Bond Pairs": 1, "Lone Pairs": 6, "Bond Type": "Single"},
+                {"Molecule": "CO2", "Valence Electrons": 16, "Bond Pairs": 4, "Lone Pairs": 4, "Bond Type": "Double (O=C=O)"},
+                {"Molecule": "N2", "Valence Electrons": 10, "Bond Pairs": 3, "Lone Pairs": 2, "Bond Type": "Triple (N≡N)"},
+                {"Molecule": "CO", "Valence Electrons": 10, "Bond Pairs": 3, "Lone Pairs": 2, "Bond Type": "Triple (:C≡O:)"}
+            ]
+        },
+        {
+            "id": "ionic-bond",
+            "title": "4.2 Ionic or Electrovalent Bond",
+            "subtitle": "Formation, Enthalpy Factors & Lattice Enthalpy",
+            "icon": "shield-bolt",
+            "summary": "Ionic bonds are formed by electrostatic attraction between positive cations and negative anions resulting from electron transfer.",
+            "subsections": [
+                {
+                    "title": "Factors Favoring Ionic Bond Formation",
+                    "content": "1. Low Ionization Enthalpy (ΔiH) of the metal atom (easier cation formation, M -> M+ + e-).\n2. High Negative Electron Gain Enthalpy (ΔegH) of non-metal atom (exothermic electron addition, X + e- -> X-).\n3. High Lattice Enthalpy (ΔlatticeH) of the resulting crystal structure."
+                },
+                {
+                    "title": "4.2.1 Lattice Enthalpy",
+                    "content": "Lattice Enthalpy of an ionic solid is defined as the energy required to completely separate one mole of a solid ionic compound into its gaseous constituent ions.\nExample: NaCl(s) -> Na+(g) + Cl-(g) ; ΔlatticeH = +788 kJ/mol.\nStability of ionic crystal (e.g. NaCl) is driven by lattice energy (-788 kJ/mol) overriding net endothermic gas-phase ionization (+147.1 kJ/mol)."
+                }
+            ],
+            "key_formulas": [
+                "Net Energy = ΔiH + ΔegH + ΔlatticeH",
+                "NaCl(s) -> Na+(g) + Cl-(g) (788 kJ/mol)"
+            ]
+        },
+        {
+            "id": "bond-parameters",
+            "title": "4.3 Bond Parameters, Resonance & Polarity",
+            "subtitle": "Bond Length, Angle, Enthalpy, Order, Resonance & Dipole Moments",
+            "icon": "ruler-combined",
+            "summary": "Quantitative metrics describing bond characteristics including length, angle, energy, order, resonance stabilization, and molecular polarity.",
+            "subsections": [
+                {
+                    "title": "4.3.1 Bond Length & Radii",
+                    "content": "Equilibrium distance between nuclei of two bonded atoms. Measured by spectroscopic, X-ray diffraction, and electron-diffraction methods. Covalent radius is half the internuclear distance between identical bonded atoms. Van der Waals radius represents overall size including non-bonded valence shell."
+                },
+                {
+                    "title": "4.3.2 Bond Angle & 4.3.3 Bond Enthalpy",
+                    "content": "Bond Angle: Angle between orbitals containing bonding electron pairs around central atom (e.g. H-O-H in H2O is 104.5°).\nBond Enthalpy: Amount of energy required to break 1 mole of bonds in gaseous state. Larger bond dissociation enthalpy means stronger bond. For polyatomic molecules (e.g. H2O), average bond enthalpy is used (Average O-H in H2O = 464.5 kJ/mol)."
+                },
+                {
+                    "title": "4.3.4 Bond Order",
+                    "content": "Number of bonds between two atoms in a molecule (H2 = 1, O2 = 2, N2 = 3, CO = 3). Higher bond order -> Higher bond enthalpy -> Shorter bond length. Isoelectronic species (e.g. F2 and O2^2- [B.O.=1]; N2, CO, NO+ [B.O.=3]) have identical bond orders."
+                },
+                {
+                    "title": "4.3.5 Resonance Structures",
+                    "content": "When a single Lewis structure cannot accurately describe experimental properties (e.g. equal 128 pm bond lengths in O3 vs single 148 pm / double 121 pm), a hybrid of canonical resonance forms is used. Resonance lowers potential energy and averages bond parameters across the molecule (examples: O3, CO3^2-, CO2)."
+                },
+                {
+                    "title": "4.3.6 Polarity of Bonds & Fajans' Rules",
+                    "content": "Dipole Moment (μ) = Charge (Q) x Distance (r). Measured in Debye (1 D = 3.33564 x 10^-30 C m). Vector quantity.\nDipole moment of polyatomic molecules depends on vector sum of bond dipoles:\n- BeF2: μ = 0 D (linear, bond dipoles cancel)\n- BF3: μ = 0 D (trigonal planar, symmetrical cancelation)\n- H2O: μ = 1.85 D (bent, 104.5° angle)\n- NH3 (1.47 D) vs NF3 (0.23 D): In NH3 lone pair dipole reinforces N-H dipoles; in NF3 lone pair dipole opposes N-F dipoles.\nFajans' Rules for Covalent Character in Ionic Bonds: Smaller cation, larger anion, higher cation charge, and pseudo-noble gas electron config increase covalent character."
+                }
+            ],
+            "key_formulas": [
+                "μ = Q × r (1 D = 3.33564 × 10⁻³⁰ C·m)",
+                "Average Bond Enthalpy = Σ(ΔH_dissociation) / n_bonds",
+                "Bond Order ∝ Bond Enthalpy ∝ 1 / Bond Length"
+            ],
+            "table_data": [
+                {"Molecule": "HF", "Geometry": "Linear", "Dipole Moment μ (D)": "1.78"},
+                {"Molecule": "HCl", "Geometry": "Linear", "Dipole Moment μ (D)": "1.07"},
+                {"Molecule": "H2O", "Geometry": "Bent", "Dipole Moment μ (D)": "1.85"},
+                {"Molecule": "CO2", "Geometry": "Linear", "Dipole Moment μ (D)": "0.00"},
+                {"Molecule": "NH3", "Geometry": "Trigonal Pyramidal", "Dipole Moment μ (D)": "1.47"},
+                {"Molecule": "NF3", "Geometry": "Trigonal Pyramidal", "Dipole Moment μ (D)": "0.23"},
+                {"Molecule": "BF3", "Geometry": "Trigonal Planar", "Dipole Moment μ (D)": "0.00"},
+                {"Molecule": "CCl4", "Geometry": "Tetrahedral", "Dipole Moment μ (D)": "0.00"}
+            ]
+        },
+        {
+            "id": "vsepr-theory",
+            "title": "4.4 VSEPR Theory (Valence Shell Electron Pair Repulsion)",
+            "subtitle": "Predicting 3D Molecular Geometries & Shapes",
+            "icon": "shapes",
+            "summary": "Proposed by Sidgwick & Powell (1940), refined by Nyholm & Gillespie (1957). Molecular shape is determined by repulsions between valence shell electron pairs around central atom.",
+            "subsections": [
+                {
+                    "title": "Main Postulates of VSEPR Theory",
+                    "content": "1. Shape of a molecule depends on number of valence electron pairs (bonded & lone pairs) around central atom.\n2. Electron pairs repel each other and orient as far apart as possible to minimize repulsion.\n3. Order of repulsive interaction: Lone Pair - Lone Pair (lp-lp) > Lone Pair - Bond Pair (lp-bp) > Bond Pair - Bond Pair (bp-bp).\n4. Lone pairs occupy more space than bond pairs because they are localized on a single nucleus.\n5. Multiple bonds are treated as a single electron pair / super pair."
+                },
+                {
+                    "title": "Geometries without Lone Pairs (ABn Type)",
+                    "content": "- AB2: Linear (180°), e.g. BeCl2, HgCl2\n- AB3: Trigonal Planar (120°), e.g. BF3, BCl3\n- AB4: Tetrahedral (109.5°), e.g. CH4, NH4+\n- AB5: Trigonal Bipyramidal (90° & 120°), e.g. PCl5\n- AB6: Octahedral (90°), e.g. SF6"
+                },
+                {
+                    "title": "Geometries with Lone Pairs (ABnEm Type)",
+                    "content": "- AB2E: Bent / V-shaped (<120°), e.g. SO2, O3\n- AB3E: Trigonal Pyramidal (107° in NH3)\n- AB2E2: Bent / V-shaped (104.5° in H2O)\n- AB4E: See-saw / Distorted Tetrahedron, e.g. SF4\n- AB3E2: T-shaped, e.g. ClF3\n- AB5E: Square Pyramidal, e.g. BrF5\n- AB4E2: Square Planar, e.g. XeF4"
+                }
+            ],
+            "vsepr_shapes": [
+                {"type": "AB2", "shape": "Linear", "angle": "180°", "bp": 2, "lp": 0, "examples": "BeCl2, CO2"},
+                {"type": "AB3", "shape": "Trigonal Planar", "angle": "120°", "bp": 3, "lp": 0, "examples": "BF3, BCl3"},
+                {"type": "AB4", "shape": "Tetrahedral", "angle": "109.5°", "bp": 4, "lp": 0, "examples": "CH4, NH4+"},
+                {"type": "AB5", "shape": "Trigonal Bipyramidal", "angle": "90°, 120°", "bp": 5, "lp": 0, "examples": "PCl5"},
+                {"type": "AB6", "shape": "Octahedral", "angle": "90°", "bp": 6, "lp": 0, "examples": "SF6"},
+                {"type": "AB2E", "shape": "Bent", "angle": "<120°", "bp": 2, "lp": 1, "examples": "SO2, O3"},
+                {"type": "AB3E", "shape": "Trigonal Pyramidal", "angle": "107°", "bp": 3, "lp": 1, "examples": "NH3"},
+                {"type": "AB2E2", "shape": "Bent", "angle": "104.5°", "bp": 2, "lp": 2, "examples": "H2O"},
+                {"type": "AB4E", "shape": "See-saw", "angle": "90°, 120°", "bp": 4, "lp": 1, "examples": "SF4"},
+                {"type": "AB3E2", "shape": "T-shaped", "angle": "90°", "bp": 3, "lp": 2, "examples": "ClF3"},
+                {"type": "AB5E", "shape": "Square Pyramidal", "angle": "90°", "bp": 5, "lp": 1, "examples": "BrF5"},
+                {"type": "AB4E2", "shape": "Square Planar", "angle": "90°", "bp": 4, "lp": 2, "examples": "XeF4"}
+            ]
+        },
+        {
+            "id": "vbt-theory",
+            "title": "4.5 Valence Bond Theory (VBT)",
+            "subtitle": "Orbital Overlap, Sigma (σ) & Pi (π) Bonds",
+            "icon": "wave-triangle",
+            "summary": "Introduced by Heitler & London (1927), developed by Pauling & Slater. Covalent bonds form by overlapping of atomic orbitals with unpaired electrons of opposite spins.",
+            "subsections": [
+                {
+                    "title": "Orbital Overlap Concept",
+                    "content": "When two atoms approach each other, attractive forces between nuclei and electrons compete with repulsive forces between like charges. Net attraction lowers potential energy, forming a stable covalent bond at internuclear distance r0 (74 pm in H2 with -435.8 kJ/mol energy)."
+                },
+                {
+                    "title": "Types of Overlapping: Sigma (σ) and Pi (π) Bonds",
+                    "content": "Sigma (σ) Bond: Formed by end-to-end (head-on / axial) overlap of bonding orbitals along internuclear axis (s-s, s-p, pz-pz overlap). Symmetrical charge distribution.\nPi (π) Bond: Formed by lateral (sideways) overlap of atomic orbitals perpendicular to internuclear axis (px-px, py-py overlap). Electron cloud lies above and below internuclear axis.\nSigma bond is stronger than Pi bond due to greater extent of orbital overlap."
+                }
+            ],
+            "key_formulas": [
+                "Strength: σ bond > π bond",
+                "Single Bond = 1σ | Double Bond = 1σ + 1π | Triple Bond = 1σ + 2π"
+            ]
+        },
+        {
+            "id": "hybridisation",
+            "title": "4.6 Hybridisation",
+            "subtitle": "Mixing of Atomic Orbitals & Molecular Shapes",
+            "icon": "dna",
+            "summary": "Introduced by Linus Pauling (1931). Phenomenon of mixing atomic orbitals of slightly different energies to redistribute energy, forming a new set of equivalent hybrid orbitals.",
+            "subsections": [
+                {
+                    "title": "Salient Features of Hybridisation",
+                    "content": "1. Number of hybrid orbitals produced equals number of atomic orbitals mixed.\n2. Hybrid orbitals are always equivalent in energy and shape.\n3. Hybrid orbitals form stronger bonds than unhybridized atomic orbitals.\n4. Hybrid orbitals direct themselves in space to minimize electron pair repulsion."
+                },
+                {
+                    "title": "Types of Hybridisation & Examples",
+                    "content": "- sp Hybridisation: 1s + 1p -> 2 sp orbitals (Linear, 180°), e.g. BeCl2, C2H2.\n- sp2 Hybridisation: 1s + 2p -> 3 sp2 orbitals (Trigonal Planar, 120°), e.g. BCl3, C2H4.\n- sp3 Hybridisation: 1s + 3p -> 4 sp3 orbitals (Tetrahedral, 109.5°), e.g. CH4, H2O (bent 104.5°), NH3 (pyramidal 107°).\n- sp3d Hybridisation: 1s + 3p + 1d (dz2) -> 5 sp3d orbitals (Trigonal Bipyramidal), e.g. PCl5 (axial bonds 240 pm are longer than equatorial 202 pm due to repulsion).\n- sp3d2 Hybridisation: 1s + 3p + 2d (dx2-y2, dz2) -> 6 sp3d2 orbitals (Octahedral, 90°), e.g. SF6."
+                }
+            ],
+            "table_data": [
+                {"Hybrid Type": "sp", "Geometry": "Linear", "Angle": "180°", "Atomic Orbitals": "s + px", "Examples": "BeCl2, C2H2"},
+                {"Hybrid Type": "sp2", "Geometry": "Trigonal Planar", "Angle": "120°", "Atomic Orbitals": "s + px + py", "Examples": "BF3, C2H4"},
+                {"Hybrid Type": "sp3", "Geometry": "Tetrahedral", "Angle": "109.5°", "Atomic Orbitals": "s + px + py + pz", "Examples": "CH4, NH3, H2O"},
+                {"Hybrid Type": "sp3d", "Geometry": "Trigonal Bipyramidal", "Angle": "90°, 120°", "Atomic Orbitals": "s + p3 + dz2", "Examples": "PCl5"},
+                {"Hybrid Type": "sp3d2", "Geometry": "Octahedral", "Angle": "90°", "Atomic Orbitals": "s + p3 + dx2-y2 + dz2", "Examples": "SF6"}
+            ]
+        },
+        {
+            "id": "mot-theory",
+            "title": "4.7 & 4.8 Molecular Orbital Theory (MOT)",
+            "subtitle": "LCAO Principle, Energy Level Diagrams & Diatomic Species",
+            "icon": "layers",
+            "summary": "Developed by Hund & Mulliken (1932). Electrons in a molecule occupy molecular orbitals spread over all nuclei. Formed by Linear Combination of Atomic Orbitals (LCAO).",
+            "subsections": [
+                {
+                    "title": "Linear Combination of Atomic Orbitals (LCAO)",
+                    "content": "Atomic orbitals combine constructively (addition ψA + ψB -> Bonding MO σ/π, lower energy) and destructively (subtraction ψA - ψB -> Antibonding MO σ*/π*, higher energy).\nConditions for LCAO:\n1. Combining atomic orbitals must have same or nearly same energy.\n2. Combining atomic orbitals must have same symmetry about molecular axis.\n3. Combining atomic orbitals must overlap to maximum extent."
+                },
+                {
+                    "title": "Energy Level Ordering of Molecular Orbitals",
+                    "content": "For Li2, Be2, B2, C2, N2 (Z <= 7, 14 electrons or fewer):\nσ1s < σ*1s < σ2s < σ*2s < (π2px = π2py) < σ2pz < (π*2px = π*2py) < σ*2pz\nFor O2, F2, Ne2 (Z > 7, more than 14 electrons):\nσ1s < σ*1s < σ2s < σ*2s < σ2pz < (π2px = π2py) < (π*2px = π*2py) < σ*2pz"
+                },
+                {
+                    "title": "Bond Order & Magnetic Properties",
+                    "content": "Bond Order = (1/2) * (Nb - Na)\n- If Nb > Na -> Stable molecule (Bond order > 0).\n- If Nb <= Na -> Unstable molecule / does not exist (e.g. He2, Be2 have Bond Order = 0).\n- Paramagnetic: Contains unpaired electrons in MOs (e.g. O2 has 2 unpaired electrons in π*2px, π*2py -> paramagnetic!).\n- Diamagnetic: All electrons paired in MOs (e.g. N2, C2)."
+                }
+            ],
+            "key_formulas": [
+                "Bond Order = (N_b - N_a) / 2",
+                "O2: (σ1s)² (σ*1s)² (σ2s)² (σ*2s)² (σ2pz)² (π2px)² (π2py)² (π*2px)¹ (π*2py)¹ -> B.O. = 2, Paramagnetic"
+            ],
+            "table_data": [
+                {"Species": "H2", "Total e-": 2, "MO Configuration": "σ1s²", "Nb": 2, "Na": 0, "Bond Order": 1.0, "Magnetic Nature": "Diamagnetic"},
+                {"Species": "He2", "Total e-": 4, "MO Configuration": "σ1s² σ*1s²", "Nb": 2, "Na": 2, "Bond Order": 0.0, "Magnetic Nature": "Does not exist"},
+                {"Species": "Li2", "Total e-": 6, "MO Configuration": "KK σ2s²", "Nb": 4, "Na": 2, "Bond Order": 1.0, "Magnetic Nature": "Diamagnetic"},
+                {"Species": "C2", "Total e-": 12, "MO Configuration": "KK σ2s² σ*2s² π2px² π2py²", "Nb": 8, "Na": 4, "Bond Order": 2.0, "Magnetic Nature": "Diamagnetic"},
+                {"Species": "N2", "Total e-": 14, "MO Configuration": "KK σ2s² σ*2s² π2px² π2py² σ2pz²", "Nb": 10, "Na": 4, "Bond Order": 3.0, "Magnetic Nature": "Diamagnetic"},
+                {"Species": "O2", "Total e-": 16, "MO Configuration": "KK σ2s² σ*2s² σ2pz² π2px² π2py² π*2px¹ π*2py¹", "Nb": 10, "Na": 6, "Bond Order": 2.0, "Magnetic Nature": "Paramagnetic"},
+                {"Species": "O2+", "Total e-": 15, "MO Configuration": "... π*2px¹", "Nb": 10, "Na": 5, "Bond Order": 2.5, "Magnetic Nature": "Paramagnetic"},
+                {"Species": "O2-", "Total e-": 17, "MO Configuration": "... π*2px² π*2py¹", "Nb": 10, "Na": 7, "Bond Order": 1.5, "Magnetic Nature": "Paramagnetic"},
+                {"Species": "O2^2-", "Total e-": 18, "MO Configuration": "... π*2px² π*2py²", "Nb": 10, "Na": 8, "Bond Order": 1.0, "Magnetic Nature": "Diamagnetic"},
+                {"Species": "F2", "Total e-": 18, "MO Configuration": "KK σ2s² σ*2s² σ2pz² π2px² π2py² π*2px² π*2py²", "Nb": 10, "Na": 8, "Bond Order": 1.0, "Magnetic Nature": "Diamagnetic"}
+            ]
+        },
+        {
+            "id": "hydrogen-bonding",
+            "title": "4.9 Hydrogen Bonding",
+            "subtitle": "Cause, Intermolecular vs Intramolecular H-Bonds & Effects",
+            "icon": "link-slash",
+            "summary": "Attractive force which binds hydrogen atom of one molecule with electronegative atom (F, O, N) of another or same molecule.",
+            "subsections": [
+                {
+                    "title": "4.9.1 Cause of Formation",
+                    "content": "When H is bonded to a highly electronegative atom (F, O, N), shared pair of electrons is pulled towards the electronegative atom, giving hydrogen a partial positive charge (δ+) and the electronegative atom a partial negative charge (δ-). Electrostatic attraction forms the hydrogen bond (represented by dotted line ...)."
+                },
+                {
+                    "title": "4.9.2 Types of H-Bonds",
+                    "content": "1. Intermolecular Hydrogen Bond: Formed between two different molecules of same or different compounds (e.g. HF...HF, H2O...H2O, alcohol & water). Causes high boiling points and solubility in water.\n2. Intramolecular Hydrogen Bond: Formed within the same molecule between H atom and electronegative atom (e.g. o-nitrophenol). Lowers boiling point compared to p-isomer."
+                }
+            ],
+            "key_formulas": [
+                "H-Bond Strength: F-H...F > O-H...O > N-H...N",
+                "Strength: Covalent Bond (200-400 kJ/mol) > H-Bond (10-40 kJ/mol) > Van der Waals forces (<10 kJ/mol)"
+            ]
+        },
+        {
+            "id": "ncert-solutions",
+            "title": "NCERT Chapter Exercises & Solved Solutions",
+            "subtitle": "All 40 Textbook Problems Solved with Explanations",
+            "icon": "clipboard-check",
+            "summary": "Comprehensive question-by-question solutions for all 40 end-of-chapter exercises in NCERT Class 11 Chemistry Chapter 4.",
+            "exercises": [
+                {"q_num": "4.1", "question": "Explain the formation of a chemical bond.", "answer": "A chemical bond is the attractive force that holds constituent atoms, ions, or molecules together to form a stable chemical species. Atoms combine to achieve minimum energy and maximum stability, attaining a noble gas electronic configuration (octet rule)."},
+                {"q_num": "4.2", "question": "Write Lewis dot symbols for Mg, Na, B, O, N, Br.", "answer": "Mg: •Mg• (2 dots) | Na: •Na (1 dot) | B: •B•• (3 dots) | O: :O: (6 dots) | N: :N• (5 dots) | Br: :Br: (7 dots)."},
+                {"q_num": "4.3", "question": "Write Lewis symbols for Al, Al3+, H, H-, O, O2-.", "answer": "Al: •Al•• | Al3+: [Al]3+ (no valence dots) | H: H• | H-: [H:]- | O: :O: | O2-: [:O:]2- (8 dots)."},
+                {"q_num": "4.4", "question": "Draw Lewis structures for H2O, SiF4, BeF2, CO3^2-, HCOOH.", "answer": "H2O: H-O-H with 2 lone pairs on O. SiF4: Si central with 4 single bonds to F atoms (each F has 3 lone pairs). BeF2: F-Be-F (Be has 4 valence e-). CO3^2-: Carbon central with one C=O double bond, two C-O- single bonds with negative charges. HCOOH: H-C(=O)-O-H."},
+                {"q_num": "4.5", "question": "Define octet rule. Write its significance and limitations.", "answer": "Octet rule states that atoms combine by gaining, losing, or sharing electrons to complete eight electrons in their valence shell. Significance: Explains chemical bonding in organic compounds and main group elements. Limitations: Incomplete octet (BCl3), odd-electron molecules (NO), expanded octet (SF6, PF5), noble gas compounds (XeF2), fails to explain molecule shapes."},
+                {"q_num": "4.6", "question": "Write the favourable factors for the formation of ionic bond.", "answer": "1. Low ionization enthalpy of the metal atom forming cation. 2. High negative electron gain enthalpy of the non-metal atom forming anion. 3. High lattice enthalpy of the ionic crystal lattice."},
+                {"q_num": "4.7", "question": "Discuss the shape of SiF4, BCl3, NH3, H2O, PCl5 using VSEPR model.", "answer": "SiF4: AB4 -> Tetrahedral (109.5°). BCl3: AB3 -> Trigonal Planar (120°). NH3: AB3E -> Trigonal Pyramidal (107°). H2O: AB2E2 -> Bent (104.5°). PCl5: AB5 -> Trigonal Bipyramidal (90°, 120°)."},
+                {"q_num": "4.8", "question": "Although geometries of NH3 and H2O are distorted tetrahedral, bond angles are 107° and 104.5°. Why?", "answer": "NH3 has 1 lone pair (lp-bp repulsions compress angle from 109.5° to 107°). H2O has 2 lone pairs (greater lp-lp repulsion further compresses angle to 104.5°)."},
+                {"q_num": "4.9", "question": "How do you express bond strength in terms of bond order?", "answer": "Bond strength is directly proportional to bond order. Higher bond order means higher bond enthalpy and shorter bond length."},
+                {"q_num": "4.10", "question": "Define bond length.", "answer": "Equilibrium distance between the nuclei of two bonded atoms in a molecule."},
+                {"q_num": "4.11", "question": "Explain important aspects of resonance with reference to CO3^2- ion.", "answer": "CO3^2- has three equivalent canonical Lewis structures with one C=O and two C-O- bonds. Resonance hybrid averages all C-O bond lengths equally, making all three C-O bonds identical in length and energy."},
+                {"q_num": "4.12", "question": "Can H3PO3 structures 1 and 2 be canonical forms? Explain.", "answer": "No, because canonical forms must have identical nuclear positions. Changing atomic arrangement creates tautomers/isomers, not resonance structures."},
+                {"q_num": "4.13", "question": "Write resonance structures for SO3, NO2, NO3-.", "answer": "SO3: 3 canonical forms with one S=O and two S-O bonds. NO2: 2 canonical forms with one N=O double bond and one N-O single bond. NO3-: 3 canonical forms with equal N-O bond lengths."},
+                {"q_num": "4.14", "question": "Show electron transfer between K and S, Ca and O, Al and N.", "answer": "2K (2x 4s1) + S (3s2 3p4) -> 2K+ + S2- -> K2S. Ca (4s2) + O (2s2 2p4) -> Ca2+ + O2- -> CaO. Al (3s2 3p1) + N (2s2 2p3) -> Al3+ + N3- -> AlN."},
+                {"q_num": "4.15", "question": "Although CO2 and H2O are triatomic, CO2 is linear while H2O is bent. Why?", "answer": "In CO2, central C has no lone pairs (AB2 type, 180° linear). In H2O, central O has 2 bond pairs and 2 lone pairs (AB2E2 type, 104.5° bent)."},
+                {"q_num": "4.16", "question": "Write significance/applications of dipole moment.", "answer": "1. Distinguishes polar and non-polar molecules. 2. Helps determine 3D geometry of molecules (e.g. μ=0 for linear CO2 vs μ>0 for bent H2O). 3. Calculates percentage ionic character in covalent bonds."},
+                {"q_num": "4.17", "question": "Define electronegativity. How does it differ from electron gain enthalpy?", "answer": "Electronegativity is the tendency of an atom in a molecule to attract shared pair of electrons towards itself. Electron gain enthalpy is the energy change when an isolated gaseous atom gains an electron in ground state."},
+                {"q_num": "4.18", "question": "Explain polar covalent bond with suitable example.", "answer": "When covalent bond is formed between two atoms with different electronegativities (e.g. H-F), shared pair shifts towards more electronegative atom (F), creating partial charges (H^δ+ - F^δ-)."},
+                {"q_num": "4.19", "question": "Arrange bonds in increasing ionic character: LiF, K2O, N2, SO2, ClF3.", "answer": "N2 < ClF3 < SO2 < K2O < LiF."},
+                {"q_num": "4.20", "question": "Correct skeletal bonds of CH3COOH.", "answer": "H3C-C(=O)-O-H (Carbon 1 bonded to 3 H's, single bond to C2; C2 double-bonded to top O and single-bonded to OH oxygen)."},
+                {"q_num": "4.21", "question": "Apart from tetrahedral, why is CH4 not square planar?", "answer": "In square planar CH4, bond angle would be 90°, causing high bp-bp repulsion. Tetrahedral geometry (109.5°) minimizes repulsions further, making it lower in energy and stable."},
+                {"q_num": "4.22", "question": "Why does BeH2 have zero dipole moment despite polar Be-H bonds?", "answer": "BeH2 is linear (180°). The two equal Be-H bond dipoles act in exact opposite directions and cancel each other out (net μ = 0 D)."},
+                {"q_num": "4.23", "question": "Which out of NH3 and NF3 has higher dipole moment and why?", "answer": "NH3 (1.47 D) has higher dipole moment than NF3 (0.23 D). In NH3, orbital dipole of N lone pair reinforces N-H bond dipoles. In NF3, N lone pair dipole opposes N-F bond dipoles."},
+                {"q_num": "4.24", "question": "What is hybridisation? Describe shapes of sp, sp2, sp3.", "answer": "Intermixing of atomic orbitals of comparable energy to form equivalent hybrid orbitals. sp -> Linear (180°); sp2 -> Trigonal Planar (120°); sp3 -> Tetrahedral (109.5°)."},
+                {"q_num": "4.25", "question": "Change in hybridisation of Al in AlCl3 + Cl- -> AlCl4-?", "answer": "AlCl3 is sp2 hybridized (trigonal planar). In AlCl4-, Al forms 4 bonds and changes to sp3 hybridisation (tetrahedral)."},
+                {"q_num": "4.26", "question": "Change in hybridisation of B and N in BF3 + NH3 -> F3B<-NH3?", "answer": "B changes from sp2 (trigonal planar in BF3) to sp3 (tetrahedral adduct). N remains sp3 hybridized in both NH3 and adduct."},
+                {"q_num": "4.27", "question": "Diagrams for double bond (C2H4) and triple bond (C2H2).", "answer": "C2H4 has 1 σ bond (sp2-sp2 overlap) and 1 π bond (unhybridized p-p sideways overlap). C2H2 has 1 σ bond (sp-sp overlap) and 2 π bonds (two perpendicular p-p overlaps)."},
+                {"q_num": "4.28", "question": "Total number of σ and π bonds in C2H2 and C2H4.", "answer": "C2H2: 3 σ bonds (2 C-H, 1 C-C) and 2 π bonds. C2H4: 5 σ bonds (4 C-H, 1 C-C) and 1 π bond."},
+                {"q_num": "4.29", "question": "Assuming x-axis as internuclear axis, which overlap forms σ bond: 1s & 1s, 1s & 2px, 2py & 2py, 1s & 2s?", "answer": "1s & 1s, 1s & 2px, 1s & 2s form σ bonds (head-on along x-axis). 2py & 2py forms π bond (perpendicular overlap)."},
+                {"q_num": "4.30", "question": "Which orbitals in C2H2 form σ and π bonds?", "answer": "C-H σ bonds use sp-s overlap. C-C σ bond uses sp-sp overlap. C-C π bonds use unhybridized py-py and pz-pz overlaps."},
+                {"q_num": "4.31", "question": "Distinguish between bond pairs and lone pairs of electrons.", "answer": "Bond pairs are shared between two bonded atoms and involved in bond formation. Lone pairs belong exclusively to a single atom and occupy non-bonding valence orbitals."},
+                {"q_num": "4.32", "question": "Distinguish between a σ and a π bond.", "answer": "σ bond: Head-on overlap, symmetrical about axis, free rotation possible, stronger. π bond: Sideways overlap, electron cloud above and below axis, restricted rotation, weaker."},
+                {"q_num": "4.33", "question": "Explain formation of H2 on basis of VBT.", "answer": "As two H atoms approach with opposite spins, attractive forces (nucleus A to electron B) dominate repulsive forces, potential energy decreases to minimum at 74 pm (-435.8 kJ/mol), forming a stable H2 molecule."},
+                {"q_num": "4.34", "question": "Important conditions for Linear Combination of Atomic Orbitals (LCAO).", "answer": "1. Similar orbital energy. 2. Same symmetry along molecular axis. 3. Maximum orbital overlap."},
+                {"q_num": "4.35", "question": "Use MOT to explain why Be2 does not exist.", "answer": "Be2 has 8 electrons: σ1s² σ*1s² σ2s² σ*2s². Nb = 4, Na = 4. Bond Order = (4 - 4)/2 = 0. Zero bond order means no stability, so Be2 does not exist."},
+                {"q_num": "4.36", "question": "Compare stability and magnetic nature of O2, O2+, O2-, O2^2-.", "answer": "Bond orders: O2+ (2.5) > O2 (2.0) > O2- (1.5) > O2^2- (1.0). Stability order: O2+ > O2 > O2- > O2^2-. Magnetic nature: O2+, O2, O2- are paramagnetic; O2^2- is diamagnetic."},
+                {"q_num": "4.37", "question": "Significance of plus and minus sign in orbital diagrams.", "answer": "Plus and minus signs represent the sign of the wave function (ψ), indicating phase of electron wave (constructive interference when same signs overlap)."},
+                {"q_num": "4.38", "question": "Describe hybridisation in PCl5. Why are axial bonds longer than equatorial?", "answer": "PCl5 has sp3d hybridisation (trigonal bipyramidal). 3 equatorial P-Cl bonds experience less repulsion (120°) while 2 axial P-Cl bonds experience greater repulsion from 3 equatorial bonds (90°), making axial bonds (240 pm) longer and weaker than equatorial bonds (202 pm)."},
+                {"q_num": "4.39", "question": "Define hydrogen bond. Is it weaker or stronger than van der Waals forces?", "answer": "Attractive electrostatic force between H atom attached to electronegative atom (F,O,N) and another electronegative atom. H-bond (10-40 kJ/mol) is stronger than van der Waals forces (<10 kJ/mol) but weaker than covalent bonds (200-400 kJ/mol)."},
+                {"q_num": "4.40", "question": "Calculate bond order of N2, O2, O2+, O2-.", "answer": "N2: (10-4)/2 = 3.0. O2: (10-6)/2 = 2.0. O2+: (10-5)/2 = 2.5. O2-: (10-7)/2 = 1.5."}
+            ]
+        }
+    ]
+
+    output_data = {
+        "title": "Chemical Bonding and Molecular Structure",
+        "chapter": "Unit 4 - NCERT Class 11 Chemistry",
+        "source": "kech104.pdf",
+        "total_pages": len(pages),
+        "modules": modules
+    }
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"Successfully generated {output_file} with {len(modules)} modules and all 40 NCERT exercise solutions!")
+
+if __name__ == "__main__":
+    process_ncert_json(r"c:\college\kech104.json", r"c:\college\bonding_data.json")

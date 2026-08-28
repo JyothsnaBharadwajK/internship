@@ -1,0 +1,71 @@
+{
+  "id": "chem-ch04",
+  "number": 4,
+  "title": "Chemical Bonding and Molecular Structure",
+  "subject": "Chemistry",
+  "grade": "Class 11 (NCERT)",
+  "description": "Explore the fundamental forces holding atoms and molecules together, Lewis octet concepts, VSEPR 3D geometry prediction, Valence Bond Theory, Hybridisation, Molecular Orbital Theory (MOT), and Hydrogen Bonding.",
+  "learning_objectives": [
+    "Understand the K\u00f6ssel-Lewis approach to chemical bonding and the octet rule.",
+    "Draw Lewis dot structures, calculate formal charges, and recognize octet limitations.",
+    "Predict 3D molecular geometries and bond angles using VSEPR Theory.",
+    "Explain directional bonding, orbital overlaps (\u03c3 and \u03c0 bonds), and hybridisation (sp, sp2, sp3, sp3d, sp3d2).",
+    "Construct Molecular Orbital configurations for homonuclear & heteronuclear diatomic species, calculating Bond Order and magnetic behavior.",
+    "Distinguish between intermolecular and intramolecular hydrogen bonding and understand their physical consequences."
+  ],
+  "stats": {
+    "total_topics": 9,
+    "total_exercises": 40,
+    "estimated_reading_time": "120 mins"
+  },
+  "big_questions": [
+    {
+      "id": "who",
+      "category": "WHO",
+      "question": "Who founded Chemical Bonding Theory?",
+      "answer": "K\u00f6ssel and Lewis (1916) independently provided the first logical explanation of valence based on noble gas octet stability. Later, Linus Pauling, Heitler, London, Hund, and Mulliken developed Valence Bond Theory (VBT), Hybridisation, and Molecular Orbital Theory (MOT).",
+      "fun_fact": "G.N. Lewis pictured atoms as cubical structures with electrons at eight corners, introducing the world to Lewis dot notations and the octet rule!",
+      "icon": "user"
+    },
+    {
+      "id": "what",
+      "category": "WHAT",
+      "question": "What is Chemical Bonding & Molecular Structure?",
+      "answer": "A chemical bond is the attractive force holding constituent atoms, ions, or molecules together in stable chemical species. Molecular structure describes the 3D spatial geometry, bond lengths, and bond angles resulting from electron interaction.",
+      "fun_fact": "Every system in nature spontaneously tends to attain stability by lowering its overall potential energy \u2014 chemical bonding is nature's universal way to achieve stability!",
+      "icon": "question"
+    },
+    {
+      "id": "when",
+      "category": "WHEN",
+      "question": "When did Bonding & Molecular Theory begin?",
+      "answer": "Modern chemical bonding theory began in 1916 with the K\u00f6ssel-Lewis octet approach. Langmuir introduced the covalent bond in 1919. Heitler & London introduced VBT in 1927, Linus Pauling proposed Hybridisation in 1931, and Hund & Mulliken developed MOT in 1932.",
+      "fun_fact": "Linus Pauling won the 1954 Nobel Prize in Chemistry for his groundbreaking discoveries on the nature of the chemical bond!",
+      "icon": "clock"
+    },
+    {
+      "id": "where",
+      "category": "WHERE",
+      "question": "Where do we find Chemical Bonds?",
+      "answer": "Chemical bonds exist across all matter in the universe \u2014 from simple gases (H2, O2, N2) and water (H2O) to ionic salts (NaCl), proteins, DNA double helices, diamond crystals, and advanced synthetic polymers.",
+      "fun_fact": "Water owes its high boiling point, surface tension, and liquid state at room temperature to extensive 3D intermolecular hydrogen bonding networks!",
+      "icon": "location-dot"
+    },
+    {
+      "id": "why",
+      "category": "WHY",
+      "question": "Why study Chemical Bonding & Structure?",
+      "answer": "Studying chemical bonding allows chemists to predict 3D molecular geometries (VSEPR theory), bond strengths, chemical reactivity, dipole moments, polarity, solubility, and magnetic behavior across compounds.",
+      "fun_fact": "Molecular Orbital Theory correctly solved the mystery of why liquid oxygen is paramagnetic (attracted to magnets), which earlier Lewis theory could not explain!",
+      "icon": "lightbulb"
+    },
+    {
+      "id": "how",
+      "category": "HOW",
+      "question": "How do we study Molecular Bonding?",
+      "answer": "Chemical bonding is investigated using modern spectroscopic techniques (IR, UV-Vis, NMR), X-ray diffraction, electron diffraction, quantum mechanical LCAO models, and VSEPR geometry prediction rules.",
+      "fun_fact": "VSEPR theory allows predicting complex 3D molecular shapes like see-saw, T-shaped, and square planar using simple valence electron pair repulsion rules!",
+      "icon": "microscope"
+    }
+  ]
+}

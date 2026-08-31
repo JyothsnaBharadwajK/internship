@@ -1743,6 +1743,73 @@
       </div>
     </div>
 
+<!-- ==================== FLOATING AI TUTOR TRIGGER ==================== -->
+<div class="ai-fab" id="ai-fab-btn" onclick="openAITutor()" title="Ask AI Chemistry Tutor">
+  <span style="font-size:1.3rem;">🤖</span>
+  <span>Ask AI Tutor</span>
+  <span class="ai-fab-dot"></span>
+</div>
+
+<!-- ==================== AI TUTOR DRAWER & MODAL OVERLAY ==================== -->
+<div class="ai-tutor-overlay" id="ai-tutor-overlay" onclick="closeAITutor()"></div>
+<div class="ai-tutor-drawer" id="ai-tutor-drawer">
+  <!-- Header -->
+  <div class="ai-tutor-header">
+    <div class="ai-tutor-title">
+      <div class="ai-avatar-badge">
+        🤖
+        <span class="ai-status-dot"></span>
+      </div>
+      <div class="ai-tutor-meta">
+        <h3>AI Chemistry Tutor</h3>
+        <span><span style="color:#22c55e;">●</span> NCERT Class 11 · Chapter 4 PDF Grounded</span>
+      </div>
+    </div>
+    <div class="ai-tutor-actions">
+      <button class="ai-action-btn" id="ai-voice-toggle" onclick="toggleAIVoice()" title="Toggle Voice Readout (TTS)">🔊</button>
+      <button class="ai-action-btn" onclick="clearAIChat()" title="Clear Chat History">🗑️</button>
+      <button class="ai-action-btn" onclick="closeAITutor()" title="Close AI Tutor">✕</button>
+    </div>
+  </div>
+
+  <!-- Suggestion Chips Bar -->
+  <div class="ai-chips-bar">
+    <button class="ai-chip" onclick="askAISuggestion('Why is O2 paramagnetic according to MOT?')">🧲 O₂ Paramagnetism</button>
+    <button class="ai-chip" onclick="askAISuggestion('Explain VSEPR Theory and order of repulsions.')">🔮 VSEPR Repulsion Order</button>
+    <button class="ai-chip" onclick="askAISuggestion('Why are axial bonds longer than equatorial bonds in PCl5?')">📐 PCl₅ Axial vs Equatorial</button>
+    <button class="ai-chip" onclick="askAISuggestion('What are the key differences between Sigma and Pi bonds?')">➡️ Sigma vs Pi Bond</button>
+    <button class="ai-chip" onclick="askAISuggestion('Why is dipole moment of NH3 greater than NF3?')">↔️ Dipole: NH₃ vs NF₃</button>
+    <button class="ai-chip" onclick="askAISuggestion('Calculate formal charge on all atoms in Ozone O3.')">⚡ Formal Charge on O₃</button>
+    <button class="ai-chip" onclick="askAISuggestion('Explain intermolecular vs intramolecular hydrogen bonding with examples.')">💧 H-Bonding: o- vs p-nitrophenol</button>
+    <button class="ai-chip" onclick="askAISuggestion('What are the limitations of the Octet Rule?')">🚫 Octet Rule Exceptions</button>
+    <button class="ai-chip" onclick="askAISuggestion('What is the hybridization and shape of SF6, XeF4, and IF7?')">🧬 Hybridization of SF₆ &amp; XeF₄</button>
+    <button class="ai-chip" onclick="askAISuggestion('Explain Hannay-Smith formula for % ionic character.')">📊 % Ionic Character Formula</button>
+  </div>
+
+  <!-- Chat Messages Stream -->
+  <div class="ai-chat-body" id="ai-chat-messages">
+    <!-- Initial Welcome Message -->
+    <div class="ai-msg assistant">
+      <div class="ai-avatar-badge" style="width:32px; height:32px; font-size:1rem; flex-shrink:0;">🤖</div>
+      <div class="ai-msg-bubble">
+        <p>👋 Hello! I am your <strong>NCERT Chemistry AI Tutor</strong>.</p>
+        <p style="margin-top:0.4rem; font-size:0.85rem; color:#94a3b8;">
+          I am trained on your complete <strong>Class 11 NCERT Chemical Bonding &amp; Molecular Structure textbook (Chapter 4 PDF)</strong>.
+        </p>
+        <p style="margin-top:0.4rem; font-size:0.85rem;">
+          You can ask me <em>any</em> theoretical concept, numerical calculations, molecular geometries, MOT orbital diagrams, or simply type a molecule formula (e.g. <code>PCl5</code>, <code>XeF4</code>, <code>O2</code>, <code>SF6</code>, <code>CO3^2-</code>) to get full step-by-step structural analysis!
+        </p>
+        <div class="ai-msg-footer">
+          <span class="ai-citation">📚 Grounded in NCERT Unit 4 (36 Pages)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Input Box -->
+  <div class="ai-chat-input-area">
+    <input type="text" id="ai-user-query" class="ai-chat-input" placeholder="Ask any chemistry question or formula (e.g. Why is O2 paramagnetic?)..." onkeydown="handleAIInputKeyDown(event)" autocomplete="off" />
+    <button class="ai-send-btn" id="ai-send-button" onclick="handleAISubmit()" title="Send Question">➤</button>
   </div>
 </div>
 
@@ -3367,77 +3434,17 @@ function flipCard() {
 
 function fcNav(dir) {
   fcIndex = (fcIndex + dir + flashcards.length) % flashcards.length;
-<!-- ==================== FLOATING AI TUTOR TRIGGER ==================== -->
-<div class="ai-fab" id="ai-fab-btn" onclick="openAITutor()" title="Ask AI Chemistry Tutor">
-  <span style="font-size:1.3rem;">🤖</span>
-  <span>Ask AI Tutor</span>
-  <span class="ai-fab-dot"></span>
-</div>
+  renderFlashcard();
+}
 
-<!-- ==================== AI TUTOR DRAWER & MODAL OVERLAY ==================== -->
-<div class="ai-tutor-overlay" id="ai-tutor-overlay" onclick="closeAITutor()"></div>
-<div class="ai-tutor-drawer" id="ai-tutor-drawer">
-  <!-- Header -->
-  <div class="ai-tutor-header">
-    <div class="ai-tutor-title">
-      <div class="ai-avatar-badge">
-        🤖
-        <span class="ai-status-dot"></span>
-      </div>
-      <div class="ai-tutor-meta">
-        <h3>AI Chemistry Tutor</h3>
-        <span><span style="color:#22c55e;">●</span> NCERT Class 11 · Chapter 4 PDF Grounded</span>
-      </div>
-    </div>
-    <div class="ai-tutor-actions">
-      <button class="ai-action-btn" id="ai-voice-toggle" onclick="toggleAIVoice()" title="Toggle Voice Readout (TTS)">🔊</button>
-      <button class="ai-action-btn" onclick="clearAIChat()" title="Clear Chat History">🗑️</button>
-      <button class="ai-action-btn" onclick="closeAITutor()" title="Close AI Tutor">✕</button>
-    </div>
-  </div>
+document.addEventListener('keydown', function(e) {
+  if(e.code === 'Space') { e.preventDefault(); flipCard(); }
+  if(e.code === 'ArrowRight') fcNav(1);
+  if(e.code === 'ArrowLeft') fcNav(-1);
+});
 
-  <!-- Suggestion Chips Bar -->
-  <div class="ai-chips-bar">
-    <button class="ai-chip" onclick="askAISuggestion('Why is O2 paramagnetic according to MOT?')">🧲 O₂ Paramagnetism</button>
-    <button class="ai-chip" onclick="askAISuggestion('Explain VSEPR Theory and order of repulsions.')">🔮 VSEPR Repulsion Order</button>
-    <button class="ai-chip" onclick="askAISuggestion('Why are axial bonds longer than equatorial bonds in PCl5?')">📐 PCl₅ Axial vs Equatorial</button>
-    <button class="ai-chip" onclick="askAISuggestion('What are the key differences between Sigma and Pi bonds?')">➡️ Sigma vs Pi Bond</button>
-    <button class="ai-chip" onclick="askAISuggestion('Why is dipole moment of NH3 greater than NF3?')">↔️ Dipole: NH₃ vs NF₃</button>
-    <button class="ai-chip" onclick="askAISuggestion('Calculate formal charge on all atoms in Ozone O3.')">⚡ Formal Charge on O₃</button>
-    <button class="ai-chip" onclick="askAISuggestion('Explain intermolecular vs intramolecular hydrogen bonding with examples.')">💧 H-Bonding: o- vs p-nitrophenol</button>
-    <button class="ai-chip" onclick="askAISuggestion('What are the limitations of the Octet Rule?')">🚫 Octet Rule Exceptions</button>
-    <button class="ai-chip" onclick="askAISuggestion('What is the hybridization and shape of SF6, XeF4, and IF7?')">🧬 Hybridization of SF₆ &amp; XeF₄</button>
-    <button class="ai-chip" onclick="askAISuggestion('Explain Hannay-Smith formula for % ionic character.')">📊 % Ionic Character Formula</button>
-  </div>
+renderFlashcard();
 
-  <!-- Chat Messages Stream -->
-  <div class="ai-chat-body" id="ai-chat-messages">
-    <!-- Initial Welcome Message -->
-    <div class="ai-msg assistant">
-      <div class="ai-avatar-badge" style="width:32px; height:32px; font-size:1rem; flex-shrink:0;">🤖</div>
-      <div class="ai-msg-bubble">
-        <p>👋 Hello! I am your <strong>NCERT Chemistry AI Tutor</strong>.</p>
-        <p style="margin-top:0.4rem; font-size:0.85rem; color:#94a3b8;">
-          I am trained on your complete <strong>Class 11 NCERT Chemical Bonding &amp; Molecular Structure textbook (Chapter 4 PDF)</strong>.
-        </p>
-        <p style="margin-top:0.4rem; font-size:0.85rem;">
-          You can ask me <em>any</em> theoretical concept, numerical calculations, molecular geometries, MOT orbital diagrams, or simply type a molecule formula (e.g. <code>PCl5</code>, <code>XeF4</code>, <code>O2</code>, <code>SF6</code>, <code>CO3^2-</code>) to get full step-by-step structural analysis!
-        </p>
-        <div class="ai-msg-footer">
-          <span class="ai-citation">📚 Grounded in NCERT Unit 4 (36 Pages)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Chat Input Box -->
-  <div class="ai-chat-input-area">
-    <input type="text" id="ai-user-query" class="ai-chat-input" placeholder="Ask any chemistry question or formula (e.g. Why is O2 paramagnetic?)..." onkeydown="handleAIInputKeyDown(event)" autocomplete="off" />
-    <button class="ai-send-btn" id="ai-send-button" onclick="handleAISubmit()" title="Send Question">➤</button>
-  </div>
-</div>
-
-<script>
 /* ==========================================================================
    11. COMPREHENSIVE NCERT CHAPTER 4 AI TUTOR & RAG RETRIEVAL ENGINE
    ========================================================================== */

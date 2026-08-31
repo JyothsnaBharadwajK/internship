@@ -32,3 +32,5 @@ __pycache__/
 *.pyc
 
 .vercel
+vite.config.js.timestamp*
+index1.html.html
